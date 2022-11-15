@@ -17,9 +17,6 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-//import static com.sun.tools.javac.util.StringUtils.toUpperCase;
-//import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
-
 public class ClientController extends LoginController implements Initializable {
     @FXML
     private Label labelWelcome, labelName, labelAge, labelGender, labelEmail, labelUsername, labelUserID, labelRole;
@@ -79,8 +76,7 @@ public class ClientController extends LoginController implements Initializable {
     {
         // REQUEST TAB
         String[] names = name.split(" ", 2);
-        //labelWelcome.setText("WELCOME, " + toUpperCase(names[1]) + "!");
-        labelWelcome.setText("WELCOME, " + names[1]+ "!");
+        labelWelcome.setText("WELCOME, " + names[1].toUpperCase()+ "!");
 
         buttonRequest.setOnAction(event -> requestRide (event, username, role, name, age, gender, email));
 
