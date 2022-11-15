@@ -103,7 +103,7 @@ public class ClientRideController extends ClientController implements Initializa
         String driverGender1 = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mariadb://andreilazarov.duckdns.org:3306/RideShare", "root", "chocolate");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
             ps = connection.prepareStatement("SELECT corresponding_driver_id FROM database_client WHERE user_id = ?");
             ps.setInt(1, DBUtils.getCurrentLoggedInUserID());
             rs = ps.executeQuery();
@@ -166,7 +166,7 @@ public class ClientRideController extends ClientController implements Initializa
         boolean rideFinished = false;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mariadb://andreilazarov.duckdns.org:3306/RideShare", "root", "chocolate");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
             ps = connection.prepareStatement("SELECT corresponding_driver_id FROM database_client WHERE user_id = ?");
             ps.setInt(1, DBUtils.getCurrentLoggedInUserID());
             rs = ps.executeQuery();

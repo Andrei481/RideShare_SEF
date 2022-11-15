@@ -29,7 +29,7 @@ class DBUtilsTest {
 
         PreparedStatement psCheckUserAlreadyExists = null;
         try{
-            connection = DriverManager.getConnection("jdbc:mariadb://andreilazarov.duckdns.org:3306/RideShare", "root", "chocolate");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
             psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM database_user WHERE username = ?");
             psCheckUserAlreadyExists.setString(1, username);
             resultSet = psCheckUserAlreadyExists.executeQuery();
@@ -127,7 +127,7 @@ class DBUtilsTest {
 
         PreparedStatement psCheckUserAlreadyExists = null;
         try{
-            connection = DriverManager.getConnection("jdbc:mariadb://andreilazarov.duckdns.org:3306/RideShare", "root", "chocolate");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
             psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM database_user WHERE username = ?");
             psCheckUserAlreadyExists.setString(1, username);
             resultSet = psCheckUserAlreadyExists.executeQuery();
@@ -225,7 +225,7 @@ class DBUtilsTest {
         ResultSet resultSet = null;
 
         try{
-            connection = DriverManager.getConnection("jdbc:mariadb://andreilazarov.duckdns.org:3306/RideShare", "root", "chocolate");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
             preparedStatement = connection.prepareStatement("SELECT user_id, password, role, name, age, gender, email FROM database_user WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
@@ -293,7 +293,7 @@ class DBUtilsTest {
         ResultSet resultSet = null;
 
         try{
-            connection = DriverManager.getConnection("jdbc:mariadb://andreilazarov.duckdns.org:3306/RideShare", "root", "chocolate");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
             preparedStatement = connection.prepareStatement("SELECT user_id, password, role, name, age, gender, email FROM database_user WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();

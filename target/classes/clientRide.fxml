@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox alignment="CENTER" minHeight="400.0" minWidth="400.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientRideController">
+   <children>
+      <VBox alignment="CENTER" minWidth="500.0" spacing="30.0">
+      <children>
+         <Label fx:id="labelPleaseWait" alignment="CENTER" contentDisplay="CENTER" text="Please wait until a driver accepts your ride" textAlignment="CENTER">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+            <Button fx:id="buttonCancel" alignment="CENTER" cancelButton="true" maxWidth="131.0" minWidth="131.0" mnemonicParsing="false" onAction="#cancelRide" prefWidth="131.0" style="-fx-background-color: #d6d6d6;" text="Cancel ride" textAlignment="CENTER" textFill="#575757">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+      </children>
+      </VBox>
+   </children>
+</HBox>
