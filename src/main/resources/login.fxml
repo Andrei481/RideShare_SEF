@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane minHeight="400.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+<GridPane minHeight="400.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" />
@@ -32,7 +32,7 @@
                 <Font size="16.0" />
             </font>
         </Label>
-        <Button fx:id="buttonSignup" maxWidth="90.0" minWidth="90.0" mnemonicParsing="false" prefWidth="90.0" style="-fx-background-color: #FFFFFF; -fx-cursor: hand;" text="Sign up" textFill="#0060fa">
+        <Button fx:id="buttonSignup" maxWidth="131.0" minWidth="131.0" mnemonicParsing="false" prefWidth="131.0" style="-fx-background-color: #FFFFFF; -fx-cursor: hand;" text="Sign up" textFill="#0060fa">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -40,7 +40,7 @@
     </VBox>
     <Pane maxWidth="15.0" minWidth="15.0" prefWidth="15.0" style="-fx-background-color: #55FED9;" GridPane.columnIndex="2" />
     <Pane maxWidth="35.0" minWidth="35.0" prefWidth="35.0" GridPane.columnIndex="3" />
-    <VBox alignment="CENTER" fillWidth="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="4">
+    <VBox alignment="CENTER" fillWidth="false" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" spacing="53.0" GridPane.columnIndex="4">
         <ImageView pickOnBounds="true" preserveRatio="true">
             <Image url="@images/lock72.png" />
         </ImageView>
