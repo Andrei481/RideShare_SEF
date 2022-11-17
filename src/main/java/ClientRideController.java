@@ -23,7 +23,7 @@ public class ClientRideController extends ClientController implements Initializa
 
     public String username, role, name, gender, email;
     public int age;
-    private int driver_id = 0;
+    private int driver_id = 0;  // issue#1
 
     private boolean canceled = false;
     
@@ -40,7 +40,7 @@ public class ClientRideController extends ClientController implements Initializa
     public void cancelRide(ActionEvent event) {
 
         canceled = true;
-        if (driver_id == 0)
+        if (driver_id == 0)     // issue#1
             DBUtils.cancelRideClient(event);
         else
             DBUtils.cancelRide(event, driver_id);
@@ -116,7 +116,7 @@ public class ClientRideController extends ClientController implements Initializa
                 }
             }
             System.out.println("accepted by" + driver_id);
-            if (driver_id != 0) {
+            if (driver_id != 0) { // issue#1
 
                 rideAccepted = true;
 
@@ -179,7 +179,7 @@ public class ClientRideController extends ClientController implements Initializa
                 }
             }
 
-            if (driver_id == 0) {
+            if (driver_id == 0) { // issue#1
 
                 rideFinished = true;
 

@@ -725,7 +725,7 @@ public class DBUtils extends LoginController {
                 {
                     int retrievedDriverId = resultSet.getInt("corresponding_driver_user_id");
 
-                    if(retrievedDriverId == 0)
+                    if(retrievedDriverId == 0)  // issue#1
                     {
                         psUpdate= connection.prepareStatement("UPDATE table_client SET ride_requested = ?, location = ?, destination = ? WHERE user_id = ?");
                         psUpdate.setBoolean(1, true);
@@ -885,7 +885,7 @@ public class DBUtils extends LoginController {
                 while(resultSet.next())
                 {
                     int retrievedDriverId = resultSet.getInt("corresponding_driver_user_id");
-                    if(retrievedDriverId == 0)
+                    if(retrievedDriverId == 0)  // issue#1
                     {
                         int retrievedClientId = resultSet.getInt("user_id");
                         String retrievedLocation = resultSet.getString("location");
@@ -949,7 +949,7 @@ public class DBUtils extends LoginController {
     }
 
     public static int getIDfromName (String name) {
-        int retrievedID = 0;
+        int retrievedID = 0;    // issue#1 ?
 
         Connection connection = null;
         PreparedStatement psGetID = null;
@@ -1021,13 +1021,13 @@ public class DBUtils extends LoginController {
             }
             else
             {
-                int retrieved_client_id = 0;
+                int retrieved_client_id = 0;    // issue#1
                 while(resultSet.next())
                 {
                     retrieved_client_id = resultSet.getInt("corresponding_client_user_id");
                 }
 
-                if(retrieved_client_id == 0)
+                if(retrieved_client_id == 0)    // issue#1
                 {
                     System.out.println("Clientul nu a fost gasit");
                 }
@@ -1287,13 +1287,13 @@ public class DBUtils extends LoginController {
             }
             else
             {
-                int retrieved_client_id = 0;
+                int retrieved_client_id = 0;    // issue#1
                 while(resultSet.next())
                 {
                     retrieved_client_id = resultSet.getInt("corresponding_client_user_id");
                 }
 
-                if(retrieved_client_id == 0)
+                if(retrieved_client_id == 0) // issue#1
                 {
                     System.out.println("Clientul nu a fost gasit");
                 }
@@ -1460,7 +1460,7 @@ public class DBUtils extends LoginController {
                                 boolean retrievedRideCancelled = rsCheck.getBoolean("ride_cancelled");
                                 String retrievedName = new String("");
 
-                                if (retrievedDriverId != 0) {
+                                if (retrievedDriverId != 0) {   // issue#1
                                     PreparedStatement psGetName = connection.prepareStatement("SELECT name FROM table_user WHERE user_id =?");
                                     psGetName.setInt(1, retrievedDriverId);
                                     ResultSet rsGetName = psGetName.executeQuery();
@@ -1477,7 +1477,7 @@ public class DBUtils extends LoginController {
                                 }
                                 String ride = retrievedLocation + " ⟶ " + retrievedDestination + ", ";
 
-                                if(retrievedDriverId == 0)
+                                if(retrievedDriverId == 0)  // issue#1
                                 {
                                     ride += "No driver, ";
                                 }
