@@ -104,15 +104,15 @@ public class ClientRideController extends ClientController implements Initializa
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            ps = connection.prepareStatement("SELECT corresponding_driver_id FROM database_client WHERE user_id = ?");
+            ps = connection.prepareStatement("SELECT corresponding_driver_user_id FROM table_client WHERE user_id = ?");
             ps.setInt(1, DBUtils.getCurrentLoggedInUserID());
             rs = ps.executeQuery();
 
             if (!rs.isBeforeFirst())
-                System.out.println("corresponding_driver_id not found");
+                System.out.println("corresponding_driver_user_id not found");
             else {
                 while(rs.next()) {
-                    driver_id = rs.getInt("corresponding_driver_id");
+                    driver_id = rs.getInt("corresponding_driver_user_id");
                 }
             }
             System.out.println("accepted by" + driver_id);
@@ -120,7 +120,7 @@ public class ClientRideController extends ClientController implements Initializa
 
                 rideAccepted = true;
 
-                ps = connection.prepareStatement("SELECT name, gender FROM database_user WHERE user_id = ?");
+                ps = connection.prepareStatement("SELECT name, gender FROM table_user WHERE user_id = ?");
                 ps.setInt(1, driver_id);
                 rs = ps.executeQuery();
 
@@ -167,15 +167,15 @@ public class ClientRideController extends ClientController implements Initializa
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            ps = connection.prepareStatement("SELECT corresponding_driver_id FROM database_client WHERE user_id = ?");
+            ps = connection.prepareStatement("SELECT corresponding_driver_user_id FROM table_client WHERE user_id = ?");
             ps.setInt(1, DBUtils.getCurrentLoggedInUserID());
             rs = ps.executeQuery();
 
             if (!rs.isBeforeFirst())
-                System.out.println("corresponding_driver_id not found");
+                System.out.println("corresponding_driver_user_id not found");
             else {
                 while(rs.next()) {
-                    driver_id = rs.getInt("corresponding_driver_id");
+                    driver_id = rs.getInt("corresponding_driver_user_id");
                 }
             }
 

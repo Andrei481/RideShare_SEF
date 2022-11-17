@@ -86,7 +86,7 @@ public class DriverRideController extends DriverController implements Initializa
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
             //old url: "jdbc:mariadb://andreilazarov.duckdns.org:3306/RideShare", "root", "chocolate"
-            ps = connection.prepareStatement("SELECT ride_started FROM database_driver WHERE user_id = ?");
+            ps = connection.prepareStatement("SELECT ride_started FROM table_driver WHERE user_id = ?");
             ps.setInt(1, DBUtils.getCurrentLoggedInUserID());
             rs = ps.executeQuery();
 

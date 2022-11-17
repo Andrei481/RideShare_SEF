@@ -151,7 +151,7 @@ public class DBUtils extends LoginController {
               */
 
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM database_user WHERE username = ?");
+            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM table_user WHERE username = ?");
             psCheckUserAlreadyExists.setString(1, username);
             resultSet = psCheckUserAlreadyExists.executeQuery();
 
@@ -169,7 +169,7 @@ public class DBUtils extends LoginController {
             }
             else
             {
-                psInsert = connection.prepareStatement("INSERT INTO database_user (username, password, role, name, age, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO table_user (username, password, role, name, age, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 psInsert.setString(1, username);
                 psInsert.setString(2, password);
                 psInsert.setString(3, role);
@@ -179,7 +179,7 @@ public class DBUtils extends LoginController {
                 psInsert.setString(7, email);
                 psInsert.executeUpdate();
 
-                st = connection.prepareStatement("SELECT MAX(user_id) from database_user");
+                st = connection.prepareStatement("SELECT MAX(user_id) from table_user");
                 rs = st.executeQuery();
                 rs.next();
                 int uid = rs.getInt(1);
@@ -286,7 +286,7 @@ public class DBUtils extends LoginController {
               */
 
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM database_user WHERE username = ?");
+            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM table_user WHERE username = ?");
             psCheckUserAlreadyExists.setString(1, username);
             resultSet = psCheckUserAlreadyExists.executeQuery();
 
@@ -304,7 +304,7 @@ public class DBUtils extends LoginController {
             }
             else
             {
-                psInsert = connection.prepareStatement("INSERT INTO database_user (username, password, role, name, age, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO table_user (username, password, role, name, age, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 psInsert.setString(1, username);
                 psInsert.setString(2, password);
                 psInsert.setString(3, role);
@@ -319,7 +319,7 @@ public class DBUtils extends LoginController {
                 //Connection connectionDriver = null;
 
 
-                st = connection.prepareStatement("SELECT MAX(user_id) from database_user");
+                st = connection.prepareStatement("SELECT MAX(user_id) from table_user");
                 rs = st.executeQuery();
                 rs.next();
                 int uid = rs.getInt(1);
@@ -404,7 +404,7 @@ public class DBUtils extends LoginController {
 
         try{
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            preparedStatement = connection.prepareStatement("SELECT user_id, password, role, name, age, gender, email FROM database_user WHERE username = ?");
+            preparedStatement = connection.prepareStatement("SELECT user_id, password, role, name, age, gender, email FROM table_user WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
@@ -444,7 +444,7 @@ public class DBUtils extends LoginController {
                         if (retrievedRole.equals("Client"))
                             changeScene(event, "client.fxml", "RideShare - Client", username, retrievedRole, retrievedName, retrievedAge, retrievedGender, retrievedEmail);
                         else if (retrievedRole.equals("Driver")) {
-                            PreparedStatement psDriver = connection.prepareStatement("SELECT license_plate FROM database_driver WHERE user_id = ?");
+                            PreparedStatement psDriver = connection.prepareStatement("SELECT license_plate FROM table_driver WHERE user_id = ?");
                             psDriver.setInt(1, retrievedUserID);
                             ResultSet rs = psDriver.executeQuery();
                             if (!rs.isBeforeFirst()) {
@@ -526,7 +526,7 @@ public class DBUtils extends LoginController {
               */
 
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM database_client WHERE user_id = ?");
+            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM table_client WHERE user_id = ?");
             psCheckUserAlreadyExists.setInt(1, userId);
             //psCheckEmailAlreadyUsed = connection.prepareStatement("SELECT * FROM user_database WHERE email = ? ");
             //psCheckEmailAlreadyUsed.setString(7, email);
@@ -546,7 +546,7 @@ public class DBUtils extends LoginController {
             }
             else
             {
-                psInsert = connection.prepareStatement("INSERT INTO database_client (user_id, ride_requested, location, destination, corresponding_driver_id) VALUES (?, ?, ?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO table_client (user_id, ride_requested, location, destination, corresponding_driver_user_id) VALUES (?, ?, ?, ?, ?)");
                 psInsert.setInt(1, userId);
                 psInsert.setBoolean(2, rideRequested);
                 psInsert.setString(3, location);
@@ -622,7 +622,7 @@ public class DBUtils extends LoginController {
               */
 
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM database_driver WHERE user_id = ?");
+            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM table_driver WHERE user_id = ?");
             psCheckUserAlreadyExists.setInt(1, userId);
             //psCheckEmailAlreadyUsed = connection.prepareStatement("SELECT * FROM user_database WHERE email = ? ");
             //psCheckEmailAlreadyUsed.setString(7, email);
@@ -642,7 +642,7 @@ public class DBUtils extends LoginController {
             }
             else
             {
-                psInsert = connection.prepareStatement("INSERT INTO database_driver (user_id, license_plate, ride_started, corresponding_client_id) VALUES (?, ?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO table_driver (user_id, license_plate, ride_started, corresponding_client_user_id) VALUES (?, ?, ?, ?)");
                 psInsert.setInt(1, userId);
                 psInsert.setString(2, licensePlate);
                 psInsert.setBoolean(3, rideStarted);
@@ -708,7 +708,7 @@ public class DBUtils extends LoginController {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            preparedStatement = connection.prepareStatement("SELECT ride_requested, location, destination, corresponding_driver_id FROM database_client WHERE user_id = ?");
+            preparedStatement = connection.prepareStatement("SELECT ride_requested, location, destination, corresponding_driver_user_id FROM table_client WHERE user_id = ?");
             preparedStatement.setInt(1, user_id);
             resultSet = preparedStatement.executeQuery();
 
@@ -723,11 +723,11 @@ public class DBUtils extends LoginController {
             {
                 while(resultSet.next())
                 {
-                    int retrievedDriverId = resultSet.getInt("corresponding_driver_id");
+                    int retrievedDriverId = resultSet.getInt("corresponding_driver_user_id");
 
                     if(retrievedDriverId == 0)
                     {
-                        psUpdate= connection.prepareStatement("UPDATE database_client SET ride_requested = ?, location = ?, destination = ? WHERE user_id = ?");
+                        psUpdate= connection.prepareStatement("UPDATE table_client SET ride_requested = ?, location = ?, destination = ? WHERE user_id = ?");
                         psUpdate.setBoolean(1, true);
                         psUpdate.setString(2, location);
                         psUpdate.setString(3, destination);
@@ -795,7 +795,7 @@ public class DBUtils extends LoginController {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            preparedStatement = connection.prepareStatement("SELECT ride_started, corresponding_client_id FROM database_driver WHERE user_id = ?");
+            preparedStatement = connection.prepareStatement("SELECT ride_started, corresponding_client_user_id FROM table_driver WHERE user_id = ?");
             preparedStatement.setInt(1, driver_id);
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.isBeforeFirst()) {
@@ -806,14 +806,14 @@ public class DBUtils extends LoginController {
             } else {
                 while(resultSet.next()) {
                     System.out.println("Driver found with user ID: " + driver_id);
-                    psUpdateDriver = connection.prepareStatement("UPDATE database_driver SET ride_started = ?, corresponding_client_id = ? WHERE user_id = ?");
+                    psUpdateDriver = connection.prepareStatement("UPDATE table_driver SET ride_started = ?, corresponding_client_user_id = ? WHERE user_id = ?");
                     psUpdateDriver.setInt(3, driver_id);
                     psUpdateDriver.setBoolean(1, true);
                     psUpdateDriver.setInt(2, client_id);
                     psUpdateDriver.executeUpdate();
                 }
 
-                psUpdateClient = connection.prepareStatement("UPDATE database_client SET corresponding_driver_id = ? WHERE user_id = ?");
+                psUpdateClient = connection.prepareStatement("UPDATE table_client SET corresponding_driver_user_id = ? WHERE user_id = ?");
                 psUpdateClient.setInt(2, client_id);
                 psUpdateClient.setInt(1, driver_id);
                 psUpdateClient.executeUpdate();
@@ -869,7 +869,7 @@ public class DBUtils extends LoginController {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            preparedStatement = connection.prepareStatement("SELECT user_id, location, destination, corresponding_driver_id FROM database_client WHERE ride_requested = ?");
+            preparedStatement = connection.prepareStatement("SELECT user_id, location, destination, corresponding_driver_user_id FROM table_client WHERE ride_requested = ?");
             preparedStatement.setBoolean(1, true); // check rides that have driver_id 0
             resultSet = preparedStatement.executeQuery();
 
@@ -884,7 +884,7 @@ public class DBUtils extends LoginController {
             {
                 while(resultSet.next())
                 {
-                    int retrievedDriverId = resultSet.getInt("corresponding_driver_id");
+                    int retrievedDriverId = resultSet.getInt("corresponding_driver_user_id");
                     if(retrievedDriverId == 0)
                     {
                         int retrievedClientId = resultSet.getInt("user_id");
@@ -892,7 +892,7 @@ public class DBUtils extends LoginController {
                         String retrievedDestination = resultSet.getString("destination");
                         String retrievedName = new String("");
 
-                        PreparedStatement psGetName = connection.prepareStatement("SELECT name FROM database_user WHERE user_id = ?");
+                        PreparedStatement psGetName = connection.prepareStatement("SELECT name FROM table_user WHERE user_id = ?");
                         psGetName.setInt(1, retrievedClientId);
                         ResultSet rsGetName = psGetName.executeQuery();
 
@@ -956,7 +956,7 @@ public class DBUtils extends LoginController {
         ResultSet rsGetID = null;
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            psGetID = connection.prepareStatement("SELECT user_id FROM database_user WHERE name = ?");
+            psGetID = connection.prepareStatement("SELECT user_id FROM table_user WHERE name = ?");
             psGetID.setString(1, name);
             rsGetID = psGetID.executeQuery();
 
@@ -1008,7 +1008,7 @@ public class DBUtils extends LoginController {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            preparedStatement = connection.prepareStatement("SELECT corresponding_client_id FROM database_driver WHERE user_id = ?");
+            preparedStatement = connection.prepareStatement("SELECT corresponding_client_user_id FROM table_driver WHERE user_id = ?");
             preparedStatement.setInt(1, driver_id);
             resultSet = preparedStatement.executeQuery();
 
@@ -1024,7 +1024,7 @@ public class DBUtils extends LoginController {
                 int retrieved_client_id = 0;
                 while(resultSet.next())
                 {
-                    retrieved_client_id = resultSet.getInt("corresponding_client_id");
+                    retrieved_client_id = resultSet.getInt("corresponding_client_user_id");
                 }
 
                 if(retrieved_client_id == 0)
@@ -1032,7 +1032,7 @@ public class DBUtils extends LoginController {
                     System.out.println("Clientul nu a fost gasit");
                 }
                 else {
-                    ps = connection.prepareStatement("SELECT location, destination FROM database_client WHERE user_id = ?");
+                    ps = connection.prepareStatement("SELECT location, destination FROM table_client WHERE user_id = ?");
                     ps.setInt(1, retrieved_client_id);
                     rs = ps.executeQuery();
                     String retrievedLocation = null, retrievedDestination = null;
@@ -1042,7 +1042,7 @@ public class DBUtils extends LoginController {
                         System.out.println("Retrieved: "+retrievedLocation +" "+retrievedDestination);
                     }
 
-                    psInsertRide = connection.prepareStatement("INSERT INTO database_rides (location, destination, requesting_client_id, accepted_driver_id, ride_cancelled) VALUES (?, ?, ?, ?, ?)");
+                    psInsertRide = connection.prepareStatement("INSERT INTO table_rides (location, destination, requesting_client_id, accepted_driver_id, ride_cancelled) VALUES (?, ?, ?, ?, ?)");
                     psInsertRide.setString(1, retrievedLocation);
                     psInsertRide.setString(2,retrievedDestination);
                     psInsertRide.setInt(3, retrieved_client_id);
@@ -1050,13 +1050,13 @@ public class DBUtils extends LoginController {
                     psInsertRide.setBoolean(5, false);
                     psInsertRide.executeUpdate();
 
-                    psUpdateDriver = connection.prepareStatement("UPDATE database_driver SET ride_started = ?, corresponding_client_id = ? WHERE user_id = ?");
+                    psUpdateDriver = connection.prepareStatement("UPDATE table_driver SET ride_started = ?, corresponding_client_user_id = ? WHERE user_id = ?");
                     psUpdateDriver.setInt(3, driver_id);
                     psUpdateDriver.setBoolean(1, false);
                     psUpdateDriver.setInt(2, 0);
                     psUpdateDriver.executeUpdate();
 
-                    psUpdateClient = connection.prepareStatement("UPDATE database_client SET ride_requested = ?, location = ?, destination = ?, corresponding_driver_id = ? WHERE user_id = ?");
+                    psUpdateClient = connection.prepareStatement("UPDATE table_client SET ride_requested = ?, location = ?, destination = ?, corresponding_driver_user_id = ? WHERE user_id = ?");
                     psUpdateClient.setInt(5, retrieved_client_id);
                     psUpdateClient.setBoolean(1, false);
                     psUpdateClient.setString(2, null);
@@ -1164,7 +1164,7 @@ public class DBUtils extends LoginController {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
 
-            ps = connection.prepareStatement("SELECT location, destination FROM database_client WHERE user_id = ?");
+            ps = connection.prepareStatement("SELECT location, destination FROM table_client WHERE user_id = ?");
             ps.setInt(1, user_id_of_client);
             rs = ps.executeQuery();
             String retrievedLocation = null, retrievedDestination = null;
@@ -1174,7 +1174,7 @@ public class DBUtils extends LoginController {
                 System.out.println("Retrieved: "+retrievedLocation +" "+retrievedDestination);
             }
 
-            psInsertRide = connection.prepareStatement("INSERT INTO database_rides (location, destination, requesting_client_id, accepted_driver_id, ride_cancelled) VALUES (?, ?, ?, ?, ?)");
+            psInsertRide = connection.prepareStatement("INSERT INTO table_rides (location, destination, requesting_client_id, accepted_driver_id, ride_cancelled) VALUES (?, ?, ?, ?, ?)");
             psInsertRide.setString(1, retrievedLocation);
             psInsertRide.setString(2,retrievedDestination);
             psInsertRide.setInt(3, user_id_of_client);
@@ -1182,7 +1182,7 @@ public class DBUtils extends LoginController {
             psInsertRide.setBoolean(5, true);
             psInsertRide.executeUpdate();
 
-            psUpdateClient = connection.prepareStatement("UPDATE database_client SET ride_requested = ?, location = ?, destination = ?, corresponding_driver_id = ? WHERE user_id = ?");
+            psUpdateClient = connection.prepareStatement("UPDATE table_client SET ride_requested = ?, location = ?, destination = ?, corresponding_driver_user_id = ? WHERE user_id = ?");
             psUpdateClient.setInt(5, user_id_of_client);
             psUpdateClient.setBoolean(1, false);
             psUpdateClient.setString(2, null);
@@ -1274,7 +1274,7 @@ public class DBUtils extends LoginController {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            preparedStatement = connection.prepareStatement("SELECT corresponding_client_id FROM database_driver WHERE user_id = ?");
+            preparedStatement = connection.prepareStatement("SELECT corresponding_client_user_id FROM table_driver WHERE user_id = ?");
             preparedStatement.setInt(1, driver_id);
             resultSet = preparedStatement.executeQuery();
 
@@ -1290,7 +1290,7 @@ public class DBUtils extends LoginController {
                 int retrieved_client_id = 0;
                 while(resultSet.next())
                 {
-                    retrieved_client_id = resultSet.getInt("corresponding_client_id");
+                    retrieved_client_id = resultSet.getInt("corresponding_client_user_id");
                 }
 
                 if(retrieved_client_id == 0)
@@ -1298,7 +1298,7 @@ public class DBUtils extends LoginController {
                     System.out.println("Clientul nu a fost gasit");
                 }
                 else {
-                    ps = connection.prepareStatement("SELECT location, destination FROM database_client WHERE user_id = ?");
+                    ps = connection.prepareStatement("SELECT location, destination FROM table_client WHERE user_id = ?");
                     ps.setInt(1, retrieved_client_id);
                     rs = ps.executeQuery();
                     String retrievedLocation = null, retrievedDestination = null;
@@ -1308,7 +1308,7 @@ public class DBUtils extends LoginController {
                         System.out.println("Retrieved: "+retrievedLocation +" "+retrievedDestination);
                     }
 
-                    psInsertRide = connection.prepareStatement("INSERT INTO database_rides (location, destination, requesting_client_id, accepted_driver_id, ride_cancelled) VALUES (?, ?, ?, ?, ?)");
+                    psInsertRide = connection.prepareStatement("INSERT INTO table_rides (location, destination, requesting_client_id, accepted_driver_id, ride_cancelled) VALUES (?, ?, ?, ?, ?)");
                     psInsertRide.setString(1, retrievedLocation);
                     psInsertRide.setString(2,retrievedDestination);
                     psInsertRide.setInt(3, retrieved_client_id);
@@ -1316,13 +1316,13 @@ public class DBUtils extends LoginController {
                     psInsertRide.setBoolean(5, true);
                     psInsertRide.executeUpdate();
 
-                    psUpdateDriver = connection.prepareStatement("UPDATE database_driver SET ride_started = ?, corresponding_client_id = ? WHERE user_id = ?");
+                    psUpdateDriver = connection.prepareStatement("UPDATE table_driver SET ride_started = ?, corresponding_client_user_id = ? WHERE user_id = ?");
                     psUpdateDriver.setInt(3, driver_id);
                     psUpdateDriver.setBoolean(1, false);
                     psUpdateDriver.setInt(2, 0);
                     psUpdateDriver.executeUpdate();
 
-                    psUpdateClient = connection.prepareStatement("UPDATE database_client SET ride_requested = ?, location = ?, destination = ?, corresponding_driver_id = ? WHERE user_id = ?");
+                    psUpdateClient = connection.prepareStatement("UPDATE table_client SET ride_requested = ?, location = ?, destination = ?, corresponding_driver_user_id = ? WHERE user_id = ?");
                     psUpdateClient.setInt(5, retrieved_client_id);
                     psUpdateClient.setBoolean(1, false);
                     psUpdateClient.setString(2, null);
@@ -1424,7 +1424,7 @@ public class DBUtils extends LoginController {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
-            preparedStatement = connection.prepareStatement("SELECT role FROM database_user WHERE user_id = ?");
+            preparedStatement = connection.prepareStatement("SELECT role FROM table_user WHERE user_id = ?");
             preparedStatement.setInt(1, getCurrentLoggedInUserID());
             resultSet = preparedStatement.executeQuery();
 
@@ -1441,7 +1441,7 @@ public class DBUtils extends LoginController {
 
                     if(retrievedRole.equals("Client"))
                     {
-                        psCheck = connection.prepareStatement("SELECT location, destination, accepted_driver_id, ride_cancelled FROM database_rides WHERE requesting_client_id =?");
+                        psCheck = connection.prepareStatement("SELECT location, destination, accepted_driver_id, ride_cancelled FROM table_rides WHERE requesting_client_id =?");
                         psCheck.setInt(1, getCurrentLoggedInUserID());
                         rsCheck = psCheck.executeQuery();
 
@@ -1461,7 +1461,7 @@ public class DBUtils extends LoginController {
                                 String retrievedName = new String("");
 
                                 if (retrievedDriverId != 0) {
-                                    PreparedStatement psGetName = connection.prepareStatement("SELECT name FROM database_user WHERE user_id =?");
+                                    PreparedStatement psGetName = connection.prepareStatement("SELECT name FROM table_user WHERE user_id =?");
                                     psGetName.setInt(1, retrievedDriverId);
                                     ResultSet rsGetName = psGetName.executeQuery();
 
@@ -1500,7 +1500,7 @@ public class DBUtils extends LoginController {
 
                     }else if(retrievedRole.equals("Driver"))
                     {
-                        psCheck = connection.prepareStatement("SELECT location, destination, requesting_client_id, ride_cancelled FROM database_rides WHERE accepted_driver_id =?");
+                        psCheck = connection.prepareStatement("SELECT location, destination, requesting_client_id, ride_cancelled FROM table_rides WHERE accepted_driver_id =?");
                         psCheck.setInt(1, getCurrentLoggedInUserID());
                         rsCheck = psCheck.executeQuery();
 
@@ -1516,7 +1516,7 @@ public class DBUtils extends LoginController {
                                 boolean retrievedRideCancelled = rsCheck.getBoolean("ride_cancelled");
                                 String retrievedName = new String("");
 
-                                PreparedStatement psGetName = connection.prepareStatement("SELECT name FROM database_user WHERE user_id =?");
+                                PreparedStatement psGetName = connection.prepareStatement("SELECT name FROM table_user WHERE user_id =?");
                                 psGetName.setInt(1, retrievedClientId);
                                 ResultSet rsGetName = psGetName.executeQuery();
 
