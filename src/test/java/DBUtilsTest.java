@@ -29,8 +29,8 @@ class DBUtilsTest {
 
         PreparedStatement psCheckUserAlreadyExists = null;
         try{
-            connection = DriverManager.getConnection("jdbc:mariadb://lazarov.go.ro:3306/RideShare", "root", "chocolate");
-            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM database_user WHERE username = ?");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
+            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM table_user WHERE username = ?");
             psCheckUserAlreadyExists.setString(1, username);
             resultSet = psCheckUserAlreadyExists.executeQuery();
 
@@ -41,7 +41,7 @@ class DBUtilsTest {
             else
             {
                 // register into the user table
-                psInsert = connection.prepareStatement("INSERT INTO database_user (username, password, role, name, age, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO table_user (username, password, role, name, age, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 psInsert.setString(1, username);
                 psInsert.setString(2, password);
                 psInsert.setString(3, role);
@@ -51,7 +51,7 @@ class DBUtilsTest {
                 psInsert.setString(7, email);
                 psInsert.executeUpdate();
 
-                st = connection.prepareStatement("SELECT MAX(user_id) from database_user");
+                st = connection.prepareStatement("SELECT MAX(user_id) from table_user");
                 rs = st.executeQuery();
                 rs.next();
                 int uid = rs.getInt(1);
@@ -127,8 +127,8 @@ class DBUtilsTest {
 
         PreparedStatement psCheckUserAlreadyExists = null;
         try{
-            connection = DriverManager.getConnection("jdbc:mariadb://lazarov.go.ro:3306/RideShare", "root", "chocolate");
-            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM database_user WHERE username = ?");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
+            psCheckUserAlreadyExists = connection.prepareStatement("SELECT * FROM table_user WHERE username = ?");
             psCheckUserAlreadyExists.setString(1, username);
             resultSet = psCheckUserAlreadyExists.executeQuery();
 
@@ -139,7 +139,7 @@ class DBUtilsTest {
             else
             {
                 // register into the user table
-                psInsert = connection.prepareStatement("INSERT INTO database_user (username, password, role, name, age, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                psInsert = connection.prepareStatement("INSERT INTO table_user (username, password, role, name, age, gender, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
                 psInsert.setString(1, username);
                 psInsert.setString(2, password);
                 psInsert.setString(3, role);
@@ -149,7 +149,7 @@ class DBUtilsTest {
                 psInsert.setString(7, email);
                 psInsert.executeUpdate();
 
-                st = connection.prepareStatement("SELECT MAX(user_id) from database_user");
+                st = connection.prepareStatement("SELECT MAX(user_id) from table_user");
                 rs = st.executeQuery();
                 rs.next();
                 int uid = rs.getInt(1);
@@ -225,8 +225,8 @@ class DBUtilsTest {
         ResultSet resultSet = null;
 
         try{
-            connection = DriverManager.getConnection("jdbc:mariadb://lazarov.go.ro:3306/RideShare", "root", "chocolate");
-            preparedStatement = connection.prepareStatement("SELECT user_id, password, role, name, age, gender, email FROM database_user WHERE username = ?");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
+            preparedStatement = connection.prepareStatement("SELECT user_id, password, role, name, age, gender, email FROM table_user WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
@@ -293,8 +293,8 @@ class DBUtilsTest {
         ResultSet resultSet = null;
 
         try{
-            connection = DriverManager.getConnection("jdbc:mariadb://lazarov.go.ro:3306/RideShare", "root", "chocolate");
-            preparedStatement = connection.prepareStatement("SELECT user_id, password, role, name, age, gender, email FROM database_user WHERE username = ?");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
+            preparedStatement = connection.prepareStatement("SELECT user_id, password, role, name, age, gender, email FROM table_user WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 

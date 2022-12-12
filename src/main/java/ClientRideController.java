@@ -23,7 +23,7 @@ public class ClientRideController extends ClientController implements Initializa
 
     public String username, role, name, gender, email;
     public int age;
-    private int driver_id = 0;
+    private int driver_id = 0;  // issue#1
 
     private boolean canceled = false;
     
@@ -40,7 +40,7 @@ public class ClientRideController extends ClientController implements Initializa
     public void cancelRide(ActionEvent event) {
 
         canceled = true;
-        if (driver_id == 0)
+        if (driver_id == 0)     // issue#1
             DBUtils.cancelRideClient(event);
         else
             DBUtils.cancelRide(event, driver_id);
@@ -103,24 +103,24 @@ public class ClientRideController extends ClientController implements Initializa
         String driverGender1 = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mariadb://lazarov.go.ro:3306/RideShare", "root", "chocolate");
-            ps = connection.prepareStatement("SELECT corresponding_driver_id FROM database_client WHERE user_id = ?");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
+            ps = connection.prepareStatement("SELECT corresponding_driver_user_id FROM table_client WHERE user_id = ?");
             ps.setInt(1, DBUtils.getCurrentLoggedInUserID());
             rs = ps.executeQuery();
 
             if (!rs.isBeforeFirst())
-                System.out.println("corresponding_driver_id not found");
+                System.out.println("corresponding_driver_user_id not found");
             else {
                 while(rs.next()) {
-                    driver_id = rs.getInt("corresponding_driver_id");
+                    driver_id = rs.getInt("corresponding_driver_user_id");
                 }
             }
             System.out.println("accepted by" + driver_id);
-            if (driver_id != 0) {
+            if (driver_id != 0) { // issue#1
 
                 rideAccepted = true;
 
-                ps = connection.prepareStatement("SELECT name, gender FROM database_user WHERE user_id = ?");
+                ps = connection.prepareStatement("SELECT name, gender FROM table_user WHERE user_id = ?");
                 ps.setInt(1, driver_id);
                 rs = ps.executeQuery();
 
@@ -166,20 +166,20 @@ public class ClientRideController extends ClientController implements Initializa
         boolean rideFinished = false;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mariadb://lazarov.go.ro:3306/RideShare", "root", "chocolate");
-            ps = connection.prepareStatement("SELECT corresponding_driver_id FROM database_client WHERE user_id = ?");
+            connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7570626", "sql7570626", "xZ7xSsbj28");
+            ps = connection.prepareStatement("SELECT corresponding_driver_user_id FROM table_client WHERE user_id = ?");
             ps.setInt(1, DBUtils.getCurrentLoggedInUserID());
             rs = ps.executeQuery();
 
             if (!rs.isBeforeFirst())
-                System.out.println("corresponding_driver_id not found");
+                System.out.println("corresponding_driver_user_id not found");
             else {
                 while(rs.next()) {
-                    driver_id = rs.getInt("corresponding_driver_id");
+                    driver_id = rs.getInt("corresponding_driver_user_id");
                 }
             }
 
-            if (driver_id == 0) {
+            if (driver_id == 0) { // issue#1
 
                 rideFinished = true;
 
