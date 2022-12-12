@@ -9,6 +9,4 @@ SEF Project Application
 
 ## Screenshots
 
-![Login screen](/extra/login-ss.png)
-
 ![Screenshots](/extra/all_screenshots.gif)
