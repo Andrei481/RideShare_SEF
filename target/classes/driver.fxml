@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TabPane minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="100.0" tabMinHeight="30.0" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DriverController">
+<Tab style="-fx-font-size: 18;" text="Rides">
+   <VBox alignment="CENTER" spacing="30.0">
+      <children>
+         <Label alignment="CENTER" contentDisplay="CENTER" text="AVAILABLE RIDES" textAlignment="CENTER" textFill="#31c6a3">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+            <VBox alignment="CENTER_LEFT" maxHeight="800.0" maxWidth="600.0" minHeight="250.0" minWidth="400.0" prefHeight="250.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <ListView fx:id="listRides" maxHeight="800.0" maxWidth="600.0" minHeight="200.0" minWidth="400.0" prefHeight="200.0" prefWidth="600.0" style="-fx-font-size: 18;" />
+                  <Button fx:id="buttonRefresh" mnemonicParsing="false" style="-fx-background-color: #55FED9;" text="Refresh" textFill="#655757">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+            </VBox>
+            <Label fx:id="labelSelectedRide" alignment="CENTER" contentDisplay="CENTER" minHeight="60.0" text="Please select a ride" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+         <Button fx:id="buttonStart" disable="true" maxWidth="131.0" minWidth="131.0" mnemonicParsing="false" prefWidth="131.0" style="-fx-background-color: #0060FA; -fx-cursor: hand;" text="Start ride" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font></Button>
+      </children>
+   </VBox>
+</Tab>
+<Tab fx:id="tabRideHistory" style="-fx-font-size: 18;" text="History">
+   <VBox alignment="CENTER" spacing="30.0">
+      <children>
+         <Label alignment="CENTER" contentDisplay="CENTER" text="PAST RIDES" textAlignment="CENTER" textFill="#31c6a3">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <ListView fx:id="listRideHistory" maxHeight="800.0" maxWidth="600.0" minHeight="200.0" minWidth="400.0" prefHeight="300.0" prefWidth="600.0" style="-fx-font-size: 18;" />
+      </children>
+   </VBox>
+</Tab>
+<Tab style="-fx-font-size: 18;" text="Profile">
+   <VBox alignment="CENTER" spacing="30.0">
+      <children>
+         <Label text="MY PROFILE" textAlignment="CENTER" textFill="#31c6a3">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+         <GridPane alignment="CENTER" maxWidth="700.0" minWidth="450.0" prefWidth="700.0">
+            <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="295.0" prefWidth="295.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="295.0" prefWidth="295.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="35.0" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints minHeight="206.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+               <VBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnIndex="1">
+                  <children>
+                     <Label text="Full name" textAlignment="CENTER" textFill="#655757">
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
+                     </Label>
+                     <Label text="Age" textAlignment="CENTER" textFill="#655757">
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
+                     </Label>
+                     <Label text="Gender" textAlignment="CENTER" textFill="#655757">
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
+                     </Label>
+                     <Label text="Email address" textAlignment="CENTER" textFill="#655757">
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
+                     </Label>
+                     <Label text="Username" textAlignment="CENTER" textFill="#655757">
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
+                     </Label>
+                     <Label text="Unique ID" textAlignment="CENTER" textFill="#655757">
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
+                     </Label>
+                     <Label text="Role" textAlignment="CENTER" textFill="#655757">
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
+                     </Label>
+                     <Label text="License plate" textAlignment="CENTER" textFill="#655757">
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
+                     </Label>
+
+                  </children>
+               </VBox>
+               <Pane maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" />
+               <VBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="3">
+                  <children>
+                     <Label fx:id="labelName" text="Last First">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="labelAge" text="99">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="labelGender" text="Male/Female/Other">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="labelEmail" text="sample_email@something.com">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="labelUsername" text="user-name">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="labelUserID" text="#0">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="labelRole" text="Client/Driver">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="labelPlate" text="TM99ABC">
+                        <font>
+                           <Font size="17.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </VBox>
+            </children>
+         </GridPane>
+         <Button fx:id="buttonLogout" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" style="-fx-background-color: #ff4e4e; -fx-cursor: hand;" text="Log out" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Button>
+      </children>
+   </VBox>
+</Tab>
+</TabPane>
