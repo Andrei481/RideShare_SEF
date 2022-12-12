@@ -1,6 +1,6 @@
 # RideShare
 
-SEF Project Application
+Project Application
 
 ### Team members:
 
